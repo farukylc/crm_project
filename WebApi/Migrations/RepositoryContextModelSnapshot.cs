@@ -60,16 +60,6 @@ namespace WebApi.Migrations
                     b.HasData(
                         new
                         {
-                            CustomerID = 1,
-                            Address = "Kadıköy",
-                            DateOfBirth = new DateTime(1995, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "ahmet.yilmaz@gmail.com",
-                            Name = "Ahmet",
-                            PhoneNumber = "5551234567",
-                            Surname = "Yılmaz"
-                        },
-                        new
-                        {
                             CustomerID = 2,
                             Address = "Beşiktaş",
                             DateOfBirth = new DateTime(1988, 7, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),

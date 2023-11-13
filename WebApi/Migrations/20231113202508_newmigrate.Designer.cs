@@ -12,8 +12,8 @@ using WebApi.Repositories;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20231113180419_test")]
-    partial class test
+    [Migration("20231113202508_newmigrate")]
+    partial class newmigrate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -62,16 +62,6 @@ namespace WebApi.Migrations
                     b.HasData(
                         new
                         {
-                            CustomerID = 1,
-                            Address = "Kadıköy",
-                            DateOfBirth = new DateTime(1995, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "ahmet.yilmaz@gmail.com",
-                            Name = "Ahmet",
-                            PhoneNumber = "5551234567",
-                            Surname = "Yılmaz"
-                        },
-                        new
-                        {
                             CustomerID = 2,
                             Address = "Beşiktaş",
                             DateOfBirth = new DateTime(1988, 7, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -89,6 +79,16 @@ namespace WebApi.Migrations
                             Name = "Mehmet",
                             PhoneNumber = "5557890123",
                             Surname = "Aydın"
+                        },
+                        new
+                        {
+                            CustomerID = 11,
+                            Address = "Üsküdar",
+                            DateOfBirth = new DateTime(1990, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "aliveli@gmail.com",
+                            Name = "Ali",
+                            PhoneNumber = "555131231",
+                            Surname = "Veli"
                         });
                 });
 #pragma warning restore 612, 618
