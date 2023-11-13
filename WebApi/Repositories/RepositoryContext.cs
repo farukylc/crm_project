@@ -46,6 +46,16 @@ public class RepositoryContext:DbContext
                 DateOfBirth = new DateTime(1992, 11, 30),
                 Address = "Beyoğlu",
                 PhoneNumber = "5557890123"
+            },
+            new Customer()
+            {
+                CustomerID = 11,
+                Name = "Ali",
+                Surname = "Veli",
+                Email = "aliveli@gmail.com",
+                DateOfBirth = new DateTime(1990, 03, 18),
+                Address = "Üsküdar",
+                PhoneNumber = "555131231"
             }
         );
     }

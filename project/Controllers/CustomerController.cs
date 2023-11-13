@@ -1,12 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using project.Models;
+using WebApi.Models;
 
 namespace project.Controllers;
 
 public class CustomerController: Controller
 {
+    
+    
     public async Task<ActionResult> Index()
     {
         using (HttpClient client = new HttpClient())

@@ -1,11 +1,23 @@
 {
   "Version": 1,
-  "Hash": "Ge4Ht9VqZATaIwATWMyPCyifD20B2PabTeyEPwtej3A=",
+  "Hash": "E+OHKn7R3W/ZY1K3rUkhDM0Xkt+0/dQeEJNVWJUMxQo=",
   "Source": "project",
   "BasePath": "_content/project",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "/Users/farukyolcu/Desktop/crm_project/WebApi/WebApi.csproj",
+      "Version": 2,
+      "Source": "WebApi",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
   "DiscoveryPatterns": [],
   "Assets": []
 }
