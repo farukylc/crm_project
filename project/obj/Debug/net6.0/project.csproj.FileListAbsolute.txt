@@ -60,3 +60,4 @@
 /Users/farukyolcu/Desktop/crm_project/project/obj/Debug/net6.0/project.csproj.CopyComplete
 /Users/farukyolcu/Desktop/crm_project/project/bin/Debug/net6.0/Humanizer.dll
 /Users/farukyolcu/Desktop/crm_project/project/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Design.dll
+/Users/farukyolcu/Desktop/crm_project/project/bin/Debug/net6.0/Newtonsoft.Json.dll

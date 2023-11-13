@@ -1,24 +1,33 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using project.Models;
-using project.Repositories;
 
 namespace project.Controllers;
 
 public class CustomerController: Controller
 {
-    //Dependency Injection
-    private readonly RepositoryContext _context;
-
-    public CustomerController(RepositoryContext context)
+    public async Task<ActionResult> Index()
     {
-        _context = context;
+        using (HttpClient client = new HttpClient())
+        {
+            string apiUrl = "https://localhost:7222/api/Customer";
+
+            HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+
+                var customerDataList = JsonConvert.DeserializeObject<List<Customer>>(data).ToList();
+
+                return View(customerDataList);
+            }
+            else
+            {
+                return View();
+            }
+        }
     }
 
-    public IActionResult Index()
-    {
-        var model = _context.Customers.ToList();
-        return View(model);
-    }
 }
-//4.9

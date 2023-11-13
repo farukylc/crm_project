@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "nxKitjcSUHRDzPEGsGqcu8jm3lNLDN7Pt7qFYHZ6Vc9du/5OHCiN/OBgflaK6qTEhZDX1+CQJcS6UA5lZAMn7g==",
+  "dgSpecHash": "+rFhLMcZfr1ilLOaRt0LNUiMfRXQ7U4szGZb/bt62XbMlt+629IWnVsiFPTdpA+ChWTUi93lFDb/db4PFyDzug==",
   "success": true,
   "projectFilePath": "/Users/farukyolcu/Desktop/crm_project/project/project.csproj",
   "expectedPackageFiles": [
@@ -32,6 +32,7 @@
     "/Users/farukyolcu/.nuget/packages/microsoft.netcore.platforms/3.1.0/microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "/Users/farukyolcu/.nuget/packages/microsoft.win32.registry/4.7.0/microsoft.win32.registry.4.7.0.nupkg.sha512",
     "/Users/farukyolcu/.nuget/packages/microsoft.win32.systemevents/4.7.0/microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "/Users/farukyolcu/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512",
     "/Users/farukyolcu/.nuget/packages/system.collections.immutable/6.0.0/system.collections.immutable.6.0.0.nupkg.sha512",
     "/Users/farukyolcu/.nuget/packages/system.configuration.configurationmanager/4.7.0/system.configuration.configurationmanager.4.7.0.nupkg.sha512",
     "/Users/farukyolcu/.nuget/packages/system.diagnostics.diagnosticsource/6.0.0/system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
