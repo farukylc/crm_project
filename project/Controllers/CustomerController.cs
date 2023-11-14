@@ -32,4 +32,29 @@ public class CustomerController: Controller
         }
     }
 
+    public ActionResult DeleteOneBook(int id)
+    {
+        
+        string apiUrl = "https://localhost:7222/api/Customer/";
+
+        using (HttpClient client = new HttpClient())
+        {
+    
+            string deleteUrl = apiUrl + id.ToString();
+            HttpResponseMessage response = client.DeleteAsync(deleteUrl).Result;
+
+            
+            if (response.IsSuccessStatusCode)
+            {
+                
+                return RedirectToAction("Index", "Customer");
+            }
+            else
+            {
+                
+                return RedirectToAction("Index", "Customer");
+            }
+        }
+    }
+
 }

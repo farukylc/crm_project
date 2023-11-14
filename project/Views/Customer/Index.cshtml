@@ -23,12 +23,14 @@
                 <td>@customer.Surname</td>
                 <td>@customer.PhoneNumber</td>
                 <td>
-                    <a href="#" class="btn btn-warning btn-sm text-white" title="Düzenle">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                    <a href="#" class="btn btn-danger btn-sm" title="Sil">
-                        <i class="fas fa-trash-alt"></i>
-                    </a>
+                    <form method="post" action="@Url.Action("DeleteOneBook", "Customer")">
+                        <input type="hidden" name="id" value="@customer.CustomerID" />
+                        <button type="submit" class="btn btn-danger btn-sm text-white" title="Sil">
+                            <i class="fas fa-trash-alt"></i> Sil
+                        </button>
+                    </form>
+                    
+                    
                 </td>
             </tr>
         }
