@@ -30,6 +30,12 @@
                         </button>
                     </form>
                     
+                    <form method="post" action="@Url.Action("GetProfile", "Customer")">
+                                            <input type="hidden" name="id" value="@customer.CustomerID" />
+                                            <button type="submit" class="btn btn-danger btn-sm text-white" title="Sil">
+                                                <i class="fas fa-trash-alt"></i> Profil
+                                            </button>
+                        </form>
                     
                 </td>
             </tr>
