@@ -1,3 +1,4 @@
+using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -74,6 +75,52 @@ public class CustomerController: Controller
             }
         }
     }
+
+    public IActionResult CreateCustomerPage()
+    {
+        return View();
+    }
+
+    public ActionResult CreateCustomer(int CustomerID, string Name, string Surname, string Email, DateTime DateOfBirth, string Address, string PhoneNumber)
+    {
+      string apiUrl = "https://localhost:7222/api/Customer/";
+
+        // Create a new Customer object with the provided data
+        Customer newCustomer = new Customer
+        {
+            CustomerID = CustomerID,
+            Name = Name,
+            Surname = Surname,
+            Email = Email,
+            DateOfBirth = DateOfBirth,
+            Address = Address,
+            PhoneNumber = PhoneNumber
+        };
+
+        // Serialize the customer object to JSON
+        string jsonCustomer = JsonConvert.SerializeObject(newCustomer);
+
+        // Use HttpClient to make a POST request
+        using (HttpClient client = new HttpClient())
+        {
+            // Create StringContent from the serialized JSON data
+            StringContent content = new StringContent(jsonCustomer, Encoding.UTF8, "application/json");
+
+            // Make the POST request
+            HttpResponseMessage response = client.PostAsync(apiUrl, content).Result;
+
+            // Check if the request was successful (HTTP status code 2xx)
+            if (response.IsSuccessStatusCode)
+            { 
+                return RedirectToAction("Index", "Customer");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Customer");
+            }
+        }
+   
+}
 
     
 
