@@ -17,6 +17,7 @@ namespace WebApi.Repositories
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CustomerConfig());
+            modelBuilder.ApplyConfiguration(new ProductConfig());
         }
     }
 }
