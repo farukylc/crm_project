@@ -119,5 +119,11 @@ namespace project.Controllers
                 }
             }
         }
+
+        public IActionResult Chart()
+        {
+
+            return View();
+        }
     }
 }
