@@ -8,16 +8,33 @@
     table {
         table-layout: fixed;
         width: 100%;
+        background-color: rgba(0, 0, 0, 0.7); /* Adjust the alpha value for transparency */
+        border-radius: 10px; /* Adjust the border-radius for rounded corners */
+        overflow: hidden; /* Prevent content overflow */
     }
 
     th, td {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        color: white; /* Text color for better visibility */
     }
 
     .actions-column {
         width: 150px; 
+    }
+
+    .btn-group {
+        margin: 0; /* Remove default margin */
+    }
+
+    .btn {
+        border-radius: 5px; /* Adjust button border-radius for rounded corners */
+        margin-right: 5px; /* Add some spacing between buttons */
+    }
+
+    .btn-success {
+        margin-top: 10px; /* Adjust margin-top for the "Add New Product" button */
     }
 </style>
 
@@ -49,14 +66,14 @@
                             <form method="post" action="@Url.Action("DeleteOneProduct", "Product")">
                                 <input type="hidden" name="id" value="@product.ProductID" />
                                 <button type="submit" class="btn btn-danger btn-sm text-white" title="Delete">
-                                    <i class="fas fa-trash-alt"></i> Delete
+                                    <i class="fas fa-trash-alt"></i> Sil
                                 </button>
                             </form>
 
                             <form method="post" action="@Url.Action("GetProfile", "Product")">
                                 <input type="hidden" name="id" value="@product.ProductID" />
                                 <button type="submit" class="btn btn-info btn-sm text-white" title="Profile">
-                                    <i class="fas fa-user-circle"></i> Profile
+                                    <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i> Ayrıntı
                                 </button>
                             </form>
                         </div>
@@ -66,6 +83,8 @@
         </tbody>
     </table>
     <div class="btn btn-success float-right text-right mt-3">
-        @Html.ActionLink(" Add New Product", "CreateProductPage", "Product", null, new { style = "color: white; text-decoration: none;" })
+        <i class='fas fa-plus'></i>
+        @Html.ActionLink(" Yeni Ürün Ekle", "CreateProductPage", "Product", null, new { style = "color: white; text-decoration: none;" })
     </div>
+
 </div>

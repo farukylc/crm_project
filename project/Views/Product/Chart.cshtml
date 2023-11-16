@@ -1,31 +1,62 @@
+@using Newtonsoft.Json
+@model List<WebApi.Models.Product>
+
 @{
     Layout = "_Layout";
 }
-<div>
-    <canvas id="myChart"></canvas>
+
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <canvas id="myChart" style="max-width: 800px; max-height: 430px; margin-bottom: 270px;"></canvas>
+    <canvas id="pieChart" style="max-width: 400px; max-height: 400px; margin-left: 20px;"></canvas>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-  const ctx = document.getElementById('myChart');
+    const ctx = document.getElementById('myChart');
+    const pieCtx = document.getElementById('pieChart');
 
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+    const labels = @Html.Raw(JsonConvert.SerializeObject(Model.Select(p => p.ProductName)));
+    const prices = @Html.Raw(JsonConvert.SerializeObject(Model.Select(p => p.Price)));
+    const salesAmounts = @Html.Raw(JsonConvert.SerializeObject(Model.Select(p => p.SalesAmount)));
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Price',
+                    data: prices,
+                    backgroundColor: '#164863',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Sales Amount',
+                    data: salesAmounts,
+                    backgroundColor: '#FFC436',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
-      }
-    }
-  });
+    });
+
+    new Chart(pieCtx, {
+        type: 'doughnut',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: salesAmounts,
+                backgroundColor: ['#164863', '#427D9D', '#9BBEC8', '#DDF2FD', '#FFC436', '#363062', '#A7D397'],
+                borderWidth: 1
+            }]
+        }
+    });
 </script>

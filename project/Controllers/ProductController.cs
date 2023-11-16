@@ -120,10 +120,31 @@ namespace project.Controllers
             }
         }
 
-        public IActionResult Chart()
+        public async Task<ActionResult> Chart()
         {
+            using (HttpClient client = new HttpClient())
+            {
+                string apiUrl = "https://localhost:7222/api/Product";
 
-            return View();
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string data = await response.Content.ReadAsStringAsync();
+
+                    var productDataList = JsonConvert.DeserializeObject<List<Product>>(data).ToList();
+
+                    // Pass the data to the view
+                    return View(productDataList);
+                }
+                else
+                {
+                    return View();
+                }
+            }
         }
+
+        
+        
     }
 }

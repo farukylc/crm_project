@@ -8,16 +8,33 @@
     table {
         table-layout: fixed;
         width: 100%;
+        background-color: rgba(0, 0, 0, 0.7); 
+        border-radius: 10px; 
+        overflow: hidden; 
     }
 
     th, td {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        color: white;
     }
 
     .actions-column {
         width: 150px; 
+    }
+
+    .btn-group {
+        margin: 0; 
+    }
+
+    .btn {
+        border-radius: 5px; 
+        margin-right: 5px; 
+    }
+
+    .btn-success {
+        margin-top: 10px; 
     }
 </style>
 
@@ -41,7 +58,7 @@
                 <td>@customer.Surname</td>
                 <td>@customer.PhoneNumber</td>
                 <td>
-                    <div class="btn-group " role="group" aria-label="Customer Actions">
+                    <div class="btn-group" role="group" aria-label="Customer Actions">
                         <form method="post" action="@Url.Action("DeleteOneBook", "Customer")">
                             <input type="hidden" name="id" value="@customer.CustomerID" />
                             <button type="submit" class="btn btn-danger btn-sm text-white" title="Sil">
@@ -56,22 +73,13 @@
                             </button>
                         </form>
                     </div>
-
                 </td>
             </tr>
         }
         </tbody>
     </table>
     <div class="btn btn-success float-right text-right mt-3">
+        <i class='fas fa-plus'></i>
         @Html.ActionLink(" Yeni Müşteri Ekle", "CreateCustomerPage", "Customer", null, new { style = "color: white; text-decoration: none;" })
     </div>
-
-
-
 </div>
-
-
-
-
-
-
