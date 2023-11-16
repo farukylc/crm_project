@@ -81,7 +81,7 @@ namespace project.Controllers
             return View();
         }
 
-        public ActionResult CreateProduct(int ProductID, string ProductName, int Price, int RateAmount, int SalesAmount, int Cost)
+        public ActionResult CreateProduct(int ProductID, string ProductName, int Price, float stars, int SalesAmount, string imgurl)
         {
             string apiUrl = "https://localhost:7222/api/Product/";
 
@@ -91,9 +91,9 @@ namespace project.Controllers
                 ProductID = ProductID,
                 ProductName = ProductName,
                 Price = Price,
-                RateAmount = RateAmount,
+                Stars =  stars,
                 SalesAmount = SalesAmount,
-                Cost = Cost
+                imgUrl = imgurl
             };
 
             // Serialize the product object to JSON

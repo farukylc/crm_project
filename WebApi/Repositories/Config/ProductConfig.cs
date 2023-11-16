@@ -12,20 +12,11 @@ public class ProductConfig : IEntityTypeConfiguration<Product>
             new Product()
             {
                 ProductID = 1,
-                ProductName = "Product1",
+                ProductName = "IPhone 13",
                 Price = 50,
-                RateAmount = 4,
+                Stars = 4.7f,
                 SalesAmount = 20,
-                Cost = 30
-            },
-            new Product()
-            {
-                ProductID = 2,
-                ProductName = "Product2",
-                Price = 80,
-                RateAmount = 5,
-                SalesAmount = 15,
-                Cost = 40
+                imgUrl = "https://cdn.vatanbilgisayar.com/Upload/PRODUCT/apple/thumb/129743-1_large.jpg"
             }
         );
     }

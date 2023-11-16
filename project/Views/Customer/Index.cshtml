@@ -53,6 +53,7 @@
         @foreach (var customer in Model)
         {
             <tr>
+               
                 <th scope="row">@customer.CustomerID</th>
                 <td>@customer.Name</td>
                 <td>@customer.Surname</td>
@@ -60,14 +61,14 @@
                 <td>
                     <div class="btn-group" role="group" aria-label="Customer Actions">
                         <form method="post" action="@Url.Action("DeleteOneBook", "Customer")">
-                            <input type="hidden" name="id" value="@customer.CustomerID" />
+                            <input type="hidden" name="id" value="@customer.CustomerID"/>
                             <button type="submit" class="btn btn-danger btn-sm text-white" title="Sil">
                                 <i class="fas fa-trash-alt"></i> Sil
                             </button>
                         </form>
-                                        
+
                         <form method="post" action="@Url.Action("GetProfile", "Customer")">
-                            <input type="hidden" name="id" value="@customer.CustomerID" />
+                            <input type="hidden" name="id" value="@customer.CustomerID"/>
                             <button type="submit" class="btn btn-info btn-sm text-white" title="Profil">
                                 <i class="fas fa-user-circle"></i> Profil
                             </button>

@@ -8,16 +8,19 @@
     table {
         table-layout: fixed;
         width: 100%;
-        background-color: rgba(0, 0, 0, 0.7); /* Adjust the alpha value for transparency */
-        border-radius: 10px; /* Adjust the border-radius for rounded corners */
-        overflow: hidden; /* Prevent content overflow */
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+        overflow: hidden;
+        color: white;
     }
 
     th, td {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        color: white; /* Text color for better visibility */
+        padding: 10px;
+        vertical-align: middle; /* Vertical alignment added */
+
     }
 
     .actions-column {
@@ -25,42 +28,54 @@
     }
 
     .btn-group {
-        margin: 0; /* Remove default margin */
+        margin: 0;
     }
 
     .btn {
-        border-radius: 5px; /* Adjust button border-radius for rounded corners */
-        margin-right: 5px; /* Add some spacing between buttons */
+        border-radius: 5px;
+        margin-right: 5px;
     }
 
     .btn-success {
-        margin-top: 10px; /* Adjust margin-top for the "Add New Product" button */
+        margin-top: 10px;
+    }
+
+    .image-column {
+        max-width: 50px; /* Adjust max-width for the image column */
+        overflow: hidden;
+    }
+
+    .image-column img {
+        width: 50%;
+        height: auto;
     }
 </style>
 
 <div class="container mt-5">
     <table class="table table-striped table-dark">
         <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Product Name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Rate Amount</th>
-                <th scope="col">Sales Amount</th>
-                <th scope="col">Cost</th>
-                <th scope="col" class="actions-column">Actions</th>
-            </tr>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col" class="image-column">Görsel</th>
+            <th scope="col">Ürün Adı</th>
+            <th scope="col">Fiyat</th>
+            <th scope="col">Yıldız</th>
+            <th scope="col">Satış Miktarı</th>
+            <th scope="col" class="actions-column">Actions</th>
+        </tr>
         </thead>
         <tbody>
             @foreach (var product in Model)
             {
                 <tr>
                     <th scope="row">@product.ProductID</th>
+                    <td class="image-column">
+                        <img src="@product.imgUrl" />
+                    </td>
                     <td>@product.ProductName</td>
                     <td>@product.Price</td>
-                    <td>@product.RateAmount</td>
+                    <td>@product.Stars</td>
                     <td>@product.SalesAmount</td>
-                    <td>@product.Cost</td>
                     <td>
                         <div class="btn-group" role="group" aria-label="Product Actions">
                             <form method="post" action="@Url.Action("DeleteOneProduct", "Product")">
@@ -69,11 +84,10 @@
                                     <i class="fas fa-trash-alt"></i> Sil
                                 </button>
                             </form>
-
                             <form method="post" action="@Url.Action("GetProfile", "Product")">
                                 <input type="hidden" name="id" value="@product.ProductID" />
                                 <button type="submit" class="btn btn-info btn-sm text-white" title="Profile">
-                                    <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i> Ayrıntı
+                                    <i class="fa-solid fa-magnifying-glass"></i> Ayrıntı
                                 </button>
                             </form>
                         </div>
@@ -86,5 +100,4 @@
         <i class='fas fa-plus'></i>
         @Html.ActionLink(" Yeni Ürün Ekle", "CreateProductPage", "Product", null, new { style = "color: white; text-decoration: none;" })
     </div>
-
 </div>

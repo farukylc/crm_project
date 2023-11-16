@@ -24,21 +24,21 @@
                     @Html.LabelFor(model => model.Price)
                     @Html.TextBoxFor(model => model.Price, new { @class = "form-control" })
                 </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.RateAmount)
-                    @Html.TextBoxFor(model => model.RateAmount, new { @class = "form-control" })
-                </div>
-
+                
                 <div class="form-group">
                     @Html.LabelFor(model => model.SalesAmount)
                     @Html.TextBoxFor(model => model.SalesAmount, new { @class = "form-control" })
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Cost)
-                    @Html.TextBoxFor(model => model.Cost, new { @class = "form-control" })
+                    @Html.LabelFor(model => model.Stars)
+                    @Html.TextBoxFor(model => model.Stars, new { @class = "form-control" })
                 </div>
+                
+                <div class="form-group">
+                                    @Html.LabelFor(model => model.imgUrl)
+                                    @Html.TextBoxFor(model => model.imgUrl, new { @class = "form-control" })
+                                </div>
 
                 <div class="form-group">
                     <input type="submit" value="Create" class="btn btn-primary" />
