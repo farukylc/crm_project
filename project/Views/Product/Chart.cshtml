@@ -6,55 +6,80 @@
 }
 
 <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <canvas id="myChart" style="max-width: 800px; max-height: 430px; margin-bottom: 270px;"></canvas>
-    <canvas id="pieChart" style="max-width: 400px; max-height: 400px; margin-left: 20px;"></canvas>
+    <canvas id="myChart" style="max-width: 800px; max-height: 430px; margin-right: 20px;"></canvas>
+    <canvas id="pieChart" style="max-width: 400px; max-height: 400px;"></canvas>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-    const ctx = document.getElementById('myChart');
+    const barCtx = document.getElementById('myChart');
     const pieCtx = document.getElementById('pieChart');
 
-    const labels = @Html.Raw(JsonConvert.SerializeObject(Model.Select(p => p.ProductName)));
+    // Data for the bar chart
+    const barLabels = @Html.Raw(JsonConvert.SerializeObject(Model.Select(p => p.ProductName)));
     const prices = @Html.Raw(JsonConvert.SerializeObject(Model.Select(p => p.Price)));
     const salesAmounts = @Html.Raw(JsonConvert.SerializeObject(Model.Select(p => p.SalesAmount)));
 
-    new Chart(ctx, {
+    // Data for the doughnut chart
+    const pieLabels = @Html.Raw(JsonConvert.SerializeObject(Model.Select(p => p.ProductName)));
+    const pieData = @Html.Raw(JsonConvert.SerializeObject(Model.Select(p => p.SalesAmount)));
+    const pieColors = ['#164863', '#427D9D', '#9BBEC8', '#DDF2FD', '#FFC436', '#363062', '#A7D397'];
+
+    // Create the dual-axis bar chart
+    new Chart(barCtx, {
         type: 'bar',
         data: {
-            labels: labels,
+            labels: barLabels,
             datasets: [
                 {
                     label: 'Price',
                     data: prices,
                     backgroundColor: '#164863',
+                    yAxisID: 'y1',
                     borderWidth: 1
                 },
                 {
                     label: 'Sales Amount',
                     data: salesAmounts,
                     backgroundColor: '#FFC436',
+                    yAxisID: 'y2',
                     borderWidth: 1
                 }
             ]
         },
         options: {
             scales: {
-                y: {
-                    beginAtZero: true
+                y1: {
+                    type: 'linear',
+                    position: 'left',
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Price'
+                    }
+                },
+                y2: {
+                    type: 'linear',
+                    position: 'right',
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Sales Amount'
+                    }
                 }
             }
         }
     });
 
+    // Create the doughnut chart
     new Chart(pieCtx, {
         type: 'doughnut',
         data: {
-            labels: labels,
+            labels: pieLabels,
             datasets: [{
-                data: salesAmounts,
-                backgroundColor: ['#164863', '#427D9D', '#9BBEC8', '#DDF2FD', '#FFC436', '#363062', '#A7D397'],
+                data: pieData,
+                backgroundColor: pieColors,
                 borderWidth: 1
             }]
         }
