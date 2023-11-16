@@ -1,13 +1,6 @@
 namespace WebApi.Models
 {
-    public enum ProductCategory
-    {
-        Elektronik,
-        BeyazEsya,
-        Kozmetik,
-        Atistirmalik
-    }
-
+    
     public class Product
     {
         public int ProductID { get; set; }
@@ -16,6 +9,5 @@ namespace WebApi.Models
         public float Stars { get; set; }
         public int SalesAmount { get; set; }
         public string imgUrl { get; set; }
-        public ProductCategory Category { get; set; }
     }
 }
