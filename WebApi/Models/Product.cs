@@ -9,5 +9,10 @@ namespace WebApi.Models
         public float Stars { get; set; }
         public int SalesAmount { get; set; }
         public string imgUrl { get; set; }
+        
+        public int CategoryId { get; set; }
+        public string CategoryName { get; set; } // Yeni özellik
+        public virtual Category Category { get; set; }
+        
     }
 }
