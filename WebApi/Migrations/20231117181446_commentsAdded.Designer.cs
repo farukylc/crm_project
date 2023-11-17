@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApi.Repositories;
 
@@ -11,9 +12,10 @@ using WebApi.Repositories;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20231117181446_commentsAdded")]
+    partial class commentsAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,7 +57,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 1,
-                            CommentDate = new DateTime(2023, 11, 18, 0, 34, 54, 538, DateTimeKind.Local).AddTicks(8600),
+                            CommentDate = new DateTime(2023, 11, 17, 21, 14, 46, 23, DateTimeKind.Local).AddTicks(5020),
                             CustomerID = 1,
                             ProductID = 1,
                             Text = "Kamera kalitesi muazzam! Gece çekimleri gerçekten etkileyici."
@@ -63,7 +65,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 2,
-                            CommentDate = new DateTime(2023, 11, 18, 0, 34, 54, 538, DateTimeKind.Local).AddTicks(8630),
+                            CommentDate = new DateTime(2023, 11, 17, 21, 14, 46, 23, DateTimeKind.Local).AddTicks(5050),
                             CustomerID = 2,
                             ProductID = 1,
                             Text = "Şarj ömrü beni şaşırttı. Bir günü rahatlıkla çıkarıyor."
@@ -71,7 +73,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 3,
-                            CommentDate = new DateTime(2023, 11, 18, 0, 34, 54, 538, DateTimeKind.Local).AddTicks(8630),
+                            CommentDate = new DateTime(2023, 11, 17, 21, 14, 46, 23, DateTimeKind.Local).AddTicks(5060),
                             CustomerID = 3,
                             ProductID = 1,
                             Text = "İnanılmaz hızlı! A14 Bionic işlemci performansı harika."
@@ -79,7 +81,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 4,
-                            CommentDate = new DateTime(2023, 11, 18, 0, 34, 54, 538, DateTimeKind.Local).AddTicks(8630),
+                            CommentDate = new DateTime(2023, 11, 17, 21, 14, 46, 23, DateTimeKind.Local).AddTicks(5060),
                             CustomerID = 4,
                             ProductID = 1,
                             Text = "Ekran renkleri çok canlı, True Tone özelliği harika bir görüntü sağlıyor."
@@ -87,7 +89,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 5,
-                            CommentDate = new DateTime(2023, 11, 18, 0, 34, 54, 538, DateTimeKind.Local).AddTicks(8630),
+                            CommentDate = new DateTime(2023, 11, 17, 21, 14, 46, 23, DateTimeKind.Local).AddTicks(5060),
                             CustomerID = 5,
                             ProductID = 1,
                             Text = "5G desteğiyle internet hızları fırlamış durumda. Harika bir deneyim!"
@@ -95,7 +97,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 6,
-                            CommentDate = new DateTime(2023, 11, 18, 0, 34, 54, 538, DateTimeKind.Local).AddTicks(8640),
+                            CommentDate = new DateTime(2023, 11, 17, 21, 14, 46, 23, DateTimeKind.Local).AddTicks(5060),
                             CustomerID = 6,
                             ProductID = 1,
                             Text = "Tasarımı çok şık ve kullanımı çok rahat. Elde harika bir his bırakıyor."
@@ -103,7 +105,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 7,
-                            CommentDate = new DateTime(2023, 11, 18, 0, 34, 54, 538, DateTimeKind.Local).AddTicks(8640),
+                            CommentDate = new DateTime(2023, 11, 17, 21, 14, 46, 23, DateTimeKind.Local).AddTicks(5060),
                             CustomerID = 7,
                             ProductID = 1,
                             Text = "iOS 15 ile gelen yeni özellikler harika! Widget'lar çok kullanışlı."
@@ -111,7 +113,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 8,
-                            CommentDate = new DateTime(2023, 11, 18, 0, 34, 54, 538, DateTimeKind.Local).AddTicks(8640),
+                            CommentDate = new DateTime(2023, 11, 17, 21, 14, 46, 23, DateTimeKind.Local).AddTicks(5060),
                             CustomerID = 8,
                             ProductID = 1,
                             Text = "Face ID çok hızlı ve güvenilir. Şifre girmeye artık gerek yok!"
@@ -119,7 +121,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 9,
-                            CommentDate = new DateTime(2023, 11, 18, 0, 34, 54, 538, DateTimeKind.Local).AddTicks(8640),
+                            CommentDate = new DateTime(2023, 11, 17, 21, 14, 46, 23, DateTimeKind.Local).AddTicks(5070),
                             CustomerID = 9,
                             ProductID = 1,
                             Text = "Dayanıklılık konusunda bir numara! Su ve toza karşı çok iyi korunuyor."
@@ -127,7 +129,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 10,
-                            CommentDate = new DateTime(2023, 11, 18, 0, 34, 54, 538, DateTimeKind.Local).AddTicks(8640),
+                            CommentDate = new DateTime(2023, 11, 17, 21, 14, 46, 23, DateTimeKind.Local).AddTicks(5070),
                             CustomerID = 10,
                             ProductID = 1,
                             Text = "Harika bir alışveriş deneyimi yaşadım. Teşekkürler Apple!"

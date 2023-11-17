@@ -10,9 +10,9 @@ namespace WebApi.Models
         public int SalesAmount { get; set; }
         public string imgUrl { get; set; }
         
-        public int CategoryId { get; set; }
-        public string CategoryName { get; set; } // Yeni özellik
-        public virtual Category Category { get; set; }
-        
+        public string Category { get; set; }
+       
+        public ICollection<Comment> Comments { get; set; }
+        public Customer Customer { get; set; }
     }
 }

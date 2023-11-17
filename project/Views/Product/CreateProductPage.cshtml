@@ -46,6 +46,10 @@
                 </div>
                 
                 
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Category, "Kategori")
+                    @Html.DropDownListFor(model => model.Category, GetCategories(), new { @class = "form-control", required = "required" })
+                </div>
 
                 
                 
@@ -56,4 +60,22 @@
             </div>
         </div>
     </div>
+   @functions {
+       private SelectList GetCategories()
+       {
+           var categories = new List<SelectListItem>
+           {
+               new SelectListItem { Text = "📱 Telefon", Value = "Telefon" },
+               new SelectListItem { Text = "🏠 Beyaz Eşya", Value = "Beyaz Eşya" },
+               new SelectListItem { Text = "🍬 Atıştırmalık", Value = "Atıştırmalık" },
+               new SelectListItem { Text = "📺 TV", Value = "TV" },
+               new SelectListItem { Text = "💻 Bilgisayar", Value = "Bilgisayar" },
+               new SelectListItem { Text = "🔧 Donanım", Value = "Donanım" }
+           };
+
+           return new SelectList(categories, "Value", "Text");
+       }
+   }
+
+
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using WebApi.Models;
 
@@ -81,7 +82,7 @@ namespace project.Controllers
             return View();
         }
 
-        public ActionResult CreateProduct(int ProductID, string ProductName, int Price, float stars, int SalesAmount, string imgurl)
+        public ActionResult CreateProduct(int ProductID, string ProductName, int Price, float stars, int SalesAmount, string imgurl, string category)
         {
             string apiUrl = "https://localhost:7222/api/Product/";
 
@@ -94,6 +95,7 @@ namespace project.Controllers
                 Stars =  stars,
                 SalesAmount = SalesAmount,
                 imgUrl = imgurl,
+                Category = category
             };
 
             // Serialize the product object to JSON
@@ -143,8 +145,9 @@ namespace project.Controllers
                 }
             }
         }
-
+        
+        }
         
         
     }
-}
+

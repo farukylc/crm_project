@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = /Users/farukyolcu/Desktop/crm_project/project
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/farukyolcu/Desktop/crm_project/project/Views/Comment/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29tbWVudC9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/farukyolcu/Desktop/crm_project/project/Views/Customer/CreateCustomerPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXIvQ3JlYXRlQ3VzdG9tZXJQYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

@@ -13,11 +13,14 @@ namespace WebApi.Repositories
         }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Comment> Comments { get; set; } // Add DbSet for Comment
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CustomerConfig());
             modelBuilder.ApplyConfiguration(new ProductConfig());
+            modelBuilder.ApplyConfiguration(new CommentConfig());
         }
     }
 }
