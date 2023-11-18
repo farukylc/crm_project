@@ -7,7 +7,8 @@ public class Comment
     public DateTime CommentDate { get; set; }
 
     //navigation property
-    public int CustomerID { get; set; }
+    public int CustomerID { get; set; } 
+
 
     public virtual Customer Customer { get; set; }
     

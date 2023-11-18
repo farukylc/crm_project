@@ -14,7 +14,8 @@ namespace WebApi.Repositories.Config
                 {
                     CommentID = 1,
                     Text = "Kamera kalitesi muazzam! Gece çekimleri gerçekten etkileyici.",
-                    CommentDate = DateTime.Now
+                    CommentDate = DateTime.Now,
+                    CustomerID = 1
                 }
                 
             );
