@@ -12,8 +12,8 @@ using WebApi.Repositories;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20231118131256_ıhopethisworks1222")]
-    partial class ıhopethisworks1222
+    [Migration("20231118134243_test12345")]
+    partial class test12345
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,8 +52,8 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 1,
-                            CommentDate = new DateTime(2023, 11, 18, 16, 12, 56, 707, DateTimeKind.Local).AddTicks(3850),
-                            CustomerID = 1,
+                            CommentDate = new DateTime(2023, 11, 18, 16, 42, 43, 591, DateTimeKind.Local).AddTicks(6500),
+                            CustomerID = 2,
                             Text = "Kamera kalitesi muazzam! Gece çekimleri gerçekten etkileyici."
                         });
                 });

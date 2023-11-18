@@ -50,8 +50,8 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 1,
-                            CommentDate = new DateTime(2023, 11, 18, 16, 12, 56, 707, DateTimeKind.Local).AddTicks(3850),
-                            CustomerID = 1,
+                            CommentDate = new DateTime(2023, 11, 18, 16, 42, 43, 591, DateTimeKind.Local).AddTicks(6500),
+                            CustomerID = 2,
                             Text = "Kamera kalitesi muazzam! Gece çekimleri gerçekten etkileyici."
                         });
                 });
