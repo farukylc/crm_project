@@ -22,6 +22,54 @@ namespace WebApi.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("WebApi.Models.Comment", b =>
+                {
+                    b.Property<int>("CommentID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CommentID"), 1L, 1);
+
+                    b.Property<DateTime>("CommentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CustomerID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CommentID");
+
+                    b.HasIndex("CustomerID");
+
+                    b.ToTable("Comments");
+
+                    b.HasData(
+                        new
+                        {
+                            CommentID = 1,
+                            CommentDate = new DateTime(2023, 11, 18, 17, 2, 5, 155, DateTimeKind.Local).AddTicks(7060),
+                            CustomerID = 1,
+                            Text = "Kamera kalitesi muazzam! Gece çekimleri gerçekten etkileyici."
+                        },
+                        new
+                        {
+                            CommentID = 2,
+                            CommentDate = new DateTime(2023, 11, 18, 17, 2, 5, 155, DateTimeKind.Local).AddTicks(7080),
+                            CustomerID = 2,
+                            Text = "ben 2"
+                        },
+                        new
+                        {
+                            CommentID = 3,
+                            CommentDate = new DateTime(2023, 11, 18, 17, 2, 5, 155, DateTimeKind.Local).AddTicks(7090),
+                            CustomerID = 3,
+                            Text = "ben 3"
+                        });
+                });
+
             modelBuilder.Entity("WebApi.Models.Customer", b =>
                 {
                     b.Property<int>("CustomerID")
@@ -60,7 +108,7 @@ namespace WebApi.Migrations
                     b.HasData(
                         new
                         {
-                            CustomerID = 2,
+                            CustomerID = 1,
                             Address = "Beşiktaş",
                             DateOfBirth = new DateTime(1988, 7, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "ayse.demir@gmail.com",
@@ -70,7 +118,7 @@ namespace WebApi.Migrations
                         },
                         new
                         {
-                            CustomerID = 10,
+                            CustomerID = 2,
                             Address = "Beyoğlu",
                             DateOfBirth = new DateTime(1992, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "mehmet.aydin@gmail.com",
@@ -80,7 +128,7 @@ namespace WebApi.Migrations
                         },
                         new
                         {
-                            CustomerID = 11,
+                            CustomerID = 3,
                             Address = "Üsküdar",
                             DateOfBirth = new DateTime(1990, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "aliveli@gmail.com",
@@ -129,6 +177,17 @@ namespace WebApi.Migrations
                             Stars = 4.7f,
                             imgUrl = "https://cdn.vatanbilgisayar.com/Upload/PRODUCT/apple/thumb/129743-1_large.jpg"
                         });
+                });
+
+            modelBuilder.Entity("WebApi.Models.Comment", b =>
+                {
+                    b.HasOne("WebApi.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,7 +11,7 @@ namespace WebApi.Repositories.Config
             builder.HasData(
                 new Customer()
                 {
-                    CustomerID = 2,
+                    CustomerID = 1,
                     Name = "Ayşe",
                     Surname = "Demir",
                     Email = "ayse.demir@gmail.com",
@@ -22,7 +22,7 @@ namespace WebApi.Repositories.Config
             
                 new Customer()
                 {
-                    CustomerID = 10,
+                    CustomerID = 2,
                     Name = "Mehmet",
                     Surname = "Aydın",
                     Email = "mehmet.aydin@gmail.com",
@@ -30,9 +30,10 @@ namespace WebApi.Repositories.Config
                     Address = "Beyoğlu",
                     PhoneNumber = "5557890123"
                 },
+                
                 new Customer()
                 {
-                    CustomerID = 11,
+                    CustomerID = 3,
                     Name = "Ali",
                     Surname = "Veli",
                     Email = "aliveli@gmail.com",
