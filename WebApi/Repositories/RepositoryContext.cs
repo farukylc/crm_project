@@ -19,6 +19,7 @@ namespace WebApi.Repositories
         {
             modelBuilder.ApplyConfiguration(new CustomerConfig());
             modelBuilder.ApplyConfiguration(new ProductConfig());
+            modelBuilder.ApplyConfiguration(new CommentConfig());
         }
     }
 }
