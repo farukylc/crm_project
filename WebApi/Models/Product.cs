@@ -14,6 +14,6 @@ namespace WebApi.Models
         
         [JsonIgnore]
 
-        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Comment>? Comments { get; set; }
     }
 }

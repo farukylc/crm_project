@@ -52,21 +52,22 @@ public class CustomerController: Controller
         }
     }
 
-    public ActionResult GetProfile(int id)
+    public ActionResult GetProfileWithComments(int id)
     {
-        string apiUrl = "https://localhost:7222/api/Customer/";
+        string apiUrl = "https://localhost:7222/api/Comment/user/";
         using (HttpClient client = new HttpClient())
         {
-            string profileUrl = apiUrl + id.ToString();
-            HttpResponseMessage response = client.GetAsync(profileUrl).Result;
+            string profileWithCommentUrl = apiUrl + id.ToString();
+            HttpResponseMessage response = client.GetAsync(profileWithCommentUrl).Result;
 
             if (response.IsSuccessStatusCode)
             {
                 string responseData = response.Content.ReadAsStringAsync().Result;
-                var customerProfile = JsonConvert.DeserializeObject<Customer>(responseData);
-                
-                
-                return View("Profile", new List<Customer> { customerProfile });
+
+                // Deserialize the JSON array into a List<Comment>
+                var comments = JsonConvert.DeserializeObject<List<Comment>>(responseData);
+
+                return View("Profile", comments);
             }
             else
             {
@@ -74,6 +75,9 @@ public class CustomerController: Controller
             }
         }
     }
+
+    
+    
 
     public IActionResult CreateCustomerPage()
     {
