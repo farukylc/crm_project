@@ -11,18 +11,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            @foreach (var customer in Model)
-            {
+        @foreach (var customer in Model)
+        {
+            <tr>
                 <th scope="row">@customer.CustomerID</th>
                 <td>@customer.Name</td>
                 <td>@customer.Surname</td>
                 <td>@customer.PhoneNumber</td>
-                
-                
-            }
-            
-        </tr>
+            </tr>
+        }
+
+       
         </tbody>
     </table>
 </div>

@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace WebApi.Models
 {
     
@@ -10,5 +12,8 @@ namespace WebApi.Models
         public int SalesAmount { get; set; }
         public string imgUrl { get; set; }
         
+        [JsonIgnore]
+
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

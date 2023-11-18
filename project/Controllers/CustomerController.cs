@@ -55,7 +55,6 @@ public class CustomerController: Controller
     public ActionResult GetProfile(int id)
     {
         string apiUrl = "https://localhost:7222/api/Customer/";
-
         using (HttpClient client = new HttpClient())
         {
             string profileUrl = apiUrl + id.ToString();
@@ -65,7 +64,7 @@ public class CustomerController: Controller
             {
                 string responseData = response.Content.ReadAsStringAsync().Result;
                 var customerProfile = JsonConvert.DeserializeObject<Customer>(responseData);
-
+                
                 
                 return View("Profile", new List<Customer> { customerProfile });
             }

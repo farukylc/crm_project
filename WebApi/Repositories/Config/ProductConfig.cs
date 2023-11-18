@@ -17,6 +17,7 @@ namespace WebApi.Repositories.Config
                     Stars = 4.7f,
                     SalesAmount = 20,
                     imgUrl = "https://cdn.vatanbilgisayar.com/Upload/PRODUCT/apple/thumb/129743-1_large.jpg",
+                    
                 }
             );
         }
