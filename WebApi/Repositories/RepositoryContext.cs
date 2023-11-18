@@ -20,6 +20,10 @@ namespace WebApi.Repositories
             modelBuilder.ApplyConfiguration(new CustomerConfig());
             modelBuilder.ApplyConfiguration(new ProductConfig());
             modelBuilder.ApplyConfiguration(new CommentConfig());
+            modelBuilder.Entity<Comment>()
+                .HasOne(c => c.Customer)
+                .WithMany()
+                .HasForeignKey(c => c.CustomerID);
         }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApi.Repositories;
 
@@ -11,9 +12,10 @@ using WebApi.Repositories;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20231118124628_ıhopethisworks6")]
+    partial class ıhopethisworks6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,7 +35,7 @@ namespace WebApi.Migrations
                     b.Property<DateTime>("CommentDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CustomerID")
+                    b.Property<int>("CustomerIDP")
                         .HasColumnType("int");
 
                     b.Property<string>("Text")
@@ -42,7 +44,7 @@ namespace WebApi.Migrations
 
                     b.HasKey("CommentID");
 
-                    b.HasIndex("CustomerID");
+                    b.HasIndex("CustomerIDP");
 
                     b.ToTable("Comments");
 
@@ -50,8 +52,8 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 1,
-                            CommentDate = new DateTime(2023, 11, 18, 15, 56, 5, 895, DateTimeKind.Local).AddTicks(6000),
-                            CustomerID = 0,
+                            CommentDate = new DateTime(2023, 11, 18, 15, 46, 27, 873, DateTimeKind.Local).AddTicks(3130),
+                            CustomerIDP = 1,
                             Text = "Kamera kalitesi muazzam! Gece çekimleri gerçekten etkileyici."
                         });
                 });
@@ -169,7 +171,7 @@ namespace WebApi.Migrations
                 {
                     b.HasOne("WebApi.Models.Customer", "Customer")
                         .WithMany()
-                        .HasForeignKey("CustomerID")
+                        .HasForeignKey("CustomerIDP")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

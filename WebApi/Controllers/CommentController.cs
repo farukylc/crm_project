@@ -22,7 +22,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                var comments = _context.Comments.ToList();
+                var comments = _context.Comments.Include(i => i.Customer).ToList();
                 return Ok(comments);
             }
             catch (Exception ex)

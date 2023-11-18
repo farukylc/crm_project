@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApi.Repositories;
 
@@ -11,9 +12,10 @@ using WebApi.Repositories;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20231118121726_test4")]
+    partial class test4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,8 +52,8 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 1,
-                            CommentDate = new DateTime(2023, 11, 18, 15, 56, 5, 895, DateTimeKind.Local).AddTicks(6000),
-                            CustomerID = 0,
+                            CommentDate = new DateTime(2023, 11, 18, 15, 17, 26, 650, DateTimeKind.Local).AddTicks(2100),
+                            CustomerID = 123,
                             Text = "Kamera kalitesi muazzam! Gece çekimleri gerçekten etkileyici."
                         });
                 });
