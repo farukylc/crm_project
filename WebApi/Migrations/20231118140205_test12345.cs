@@ -83,7 +83,17 @@ namespace WebApi.Migrations
             migrationBuilder.InsertData(
                 table: "Comments",
                 columns: new[] { "CommentID", "CommentDate", "CustomerID", "Text" },
-                values: new object[] { 1, new DateTime(2023, 11, 18, 16, 42, 43, 591, DateTimeKind.Local).AddTicks(6500), 2, "Kamera kalitesi muazzam! Gece çekimleri gerçekten etkileyici." });
+                values: new object[] { 1, new DateTime(2023, 11, 18, 17, 2, 5, 155, DateTimeKind.Local).AddTicks(7060), 1, "Kamera kalitesi muazzam! Gece çekimleri gerçekten etkileyici." });
+
+            migrationBuilder.InsertData(
+                table: "Comments",
+                columns: new[] { "CommentID", "CommentDate", "CustomerID", "Text" },
+                values: new object[] { 2, new DateTime(2023, 11, 18, 17, 2, 5, 155, DateTimeKind.Local).AddTicks(7080), 2, "ben 2" });
+
+            migrationBuilder.InsertData(
+                table: "Comments",
+                columns: new[] { "CommentID", "CommentDate", "CustomerID", "Text" },
+                values: new object[] { 3, new DateTime(2023, 11, 18, 17, 2, 5, 155, DateTimeKind.Local).AddTicks(7090), 3, "ben 3" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_CustomerID",

@@ -37,7 +37,7 @@ namespace WebApi.Controllers
             try
             {
                 var comment = _context
-                    .Comments
+                    .Comments.Include(i => i.Customer)
                     .Where(c => c.CommentID.Equals(id))
                     .SingleOrDefault();
 
@@ -55,32 +55,6 @@ namespace WebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpDelete("{id:int}")]
-        public IActionResult DeleteOneComment([FromRoute(Name = "id")] int id)
-        {
-            try
-            {
-                var entity = _context
-                    .Comments
-                    .Where(c => c.CommentID.Equals(id))
-                    .SingleOrDefault();
-
-                if (entity is null)
-                    return NotFound(new
-                    {
-                        statusCode = 404,
-                        message = $"Comment with id:{id} could not be found."
-                    });  // 404
-
-                _context.Comments.Remove(entity);
-                _context.SaveChanges();
-
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        
     }
 }

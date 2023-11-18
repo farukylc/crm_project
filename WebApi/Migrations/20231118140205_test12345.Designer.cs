@@ -12,7 +12,7 @@ using WebApi.Repositories;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20231118134243_test12345")]
+    [Migration("20231118140205_test12345")]
     partial class test12345
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,9 +52,23 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 1,
-                            CommentDate = new DateTime(2023, 11, 18, 16, 42, 43, 591, DateTimeKind.Local).AddTicks(6500),
-                            CustomerID = 2,
+                            CommentDate = new DateTime(2023, 11, 18, 17, 2, 5, 155, DateTimeKind.Local).AddTicks(7060),
+                            CustomerID = 1,
                             Text = "Kamera kalitesi muazzam! Gece çekimleri gerçekten etkileyici."
+                        },
+                        new
+                        {
+                            CommentID = 2,
+                            CommentDate = new DateTime(2023, 11, 18, 17, 2, 5, 155, DateTimeKind.Local).AddTicks(7080),
+                            CustomerID = 2,
+                            Text = "ben 2"
+                        },
+                        new
+                        {
+                            CommentID = 3,
+                            CommentDate = new DateTime(2023, 11, 18, 17, 2, 5, 155, DateTimeKind.Local).AddTicks(7090),
+                            CustomerID = 3,
+                            Text = "ben 3"
                         });
                 });
 

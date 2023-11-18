@@ -1,0 +1,64 @@
+@{
+    Layout = "_Layout";
+}
+@model List<WebApi.Models.Comment>
+@using Microsoft.AspNetCore.Mvc
+
+<style>
+    table {
+        table-layout: fixed;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.7); 
+        border-radius: 10px; 
+        overflow: hidden; 
+    }
+
+    th, td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: white;
+    }
+
+    .actions-column {
+        width: 150px; 
+    }
+
+    .btn-group {
+        margin: 0; 
+    }
+
+    .btn {
+        border-radius: 5px; 
+        margin-right: 5px; 
+    }
+
+    .btn-success {
+        margin-top: 10px; 
+    }
+</style>
+
+<div class="container mt-5">
+    <table class="table table-striped table-dark">
+        <thead>
+        <tr>
+            
+            <th scope="col">Adı</th>
+            <th scope="col">Tarih</th>
+            <th scope="col">Yorum</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var comment in Model)
+        {
+            <tr>
+               
+                <th scope="row">@comment.Customer?.Name</th>
+                <td>@comment?.CommentDate</td>
+                <td>@comment?.Text</td>
+                
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
