@@ -52,22 +52,46 @@ public class CustomerController: Controller
         }
     }
 
-    public ActionResult GetProfileWithComments(int id)
+    public ActionResult GetProfileWithOrders(int id)
     {
-        string apiUrl = "https://localhost:7222/api/Comment/user/";
+        string customerApiUrl = "https://localhost:7222/api/Customer/";
+        string orderApiUrl = "https://localhost:7222/api/Order/customer/";
+        string commentApiUrl = "https://localhost:7222/api/Comment/user/";
+
         using (HttpClient client = new HttpClient())
         {
-            string profileWithCommentUrl = apiUrl + id.ToString();
-            HttpResponseMessage response = client.GetAsync(profileWithCommentUrl).Result;
+            // Fetch customer data
+            string customerUrl = customerApiUrl + id.ToString();
+            HttpResponseMessage customerResponse = client.GetAsync(customerUrl).Result;
 
-            if (response.IsSuccessStatusCode)
+            // Fetch order data
+            string orderUrl = orderApiUrl + id.ToString();
+            HttpResponseMessage orderResponse = client.GetAsync(orderUrl).Result;
+
+            // Fetch comment data
+            string commentUrl = commentApiUrl + id.ToString();
+            HttpResponseMessage commentResponse = client.GetAsync(commentUrl).Result;
+
+            if (customerResponse.IsSuccessStatusCode && orderResponse.IsSuccessStatusCode && commentResponse.IsSuccessStatusCode)
             {
-                string responseData = response.Content.ReadAsStringAsync().Result;
+                string customerData = customerResponse.Content.ReadAsStringAsync().Result;
+                string orderData = orderResponse.Content.ReadAsStringAsync().Result;
+                string commentData = commentResponse.Content.ReadAsStringAsync().Result;
 
-                // Deserialize the JSON array into a List<Comment>
-                var comments = JsonConvert.DeserializeObject<List<Comment>>(responseData);
+                // Deserialize the JSON data into Customer, List<Order>, and List<Comment>
+                var customer = JsonConvert.DeserializeObject<Customer>(customerData);
+                var orders = JsonConvert.DeserializeObject<List<Order>>(orderData);
+                var comments = JsonConvert.DeserializeObject<List<Comment>>(commentData);
 
-                return View("Profile", comments);
+                // Create a view model to hold customer, orders, and comments
+                var viewModel = new CustomerProfileViewModel
+                {
+                    Customer = customer,
+                    Orders = orders,
+                    Comments = comments
+                };
+
+                return View("Profile", viewModel);
             }
             else
             {
@@ -75,6 +99,8 @@ public class CustomerController: Controller
             }
         }
     }
+
+
 
     
     

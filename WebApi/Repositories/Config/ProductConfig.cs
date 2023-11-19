@@ -18,6 +18,16 @@ namespace WebApi.Repositories.Config
                     SalesAmount = 20,
                     imgUrl = "https://cdn.vatanbilgisayar.com/Upload/PRODUCT/apple/thumb/129743-1_large.jpg",
                     
+                },
+                new Product()
+                {
+                    ProductID = 2,
+                    ProductName = "Macbook Pro",
+                    Price = 90000,
+                    Stars = 4.7f,
+                    SalesAmount = 23,
+                    imgUrl = "https://cdn.akakce.com/z/apple/macbook-pro-mkgp3tu-a-apple-m1-pro-16-gb-512-gb-ssd-16-notebook.jpg"
+                    
                 }
             );
         }

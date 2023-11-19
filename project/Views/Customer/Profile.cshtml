@@ -1,4 +1,4 @@
-@model List<WebApi.Models.Comment>
+@model WebApi.Models.CustomerProfileViewModel
 
 <style>
     table {
@@ -34,18 +34,13 @@
         </tr>
         </thead>
         <tbody>
-        @if (Model != null && Model.Any())
+        @if (Model != null && Model.Customer != null)
         {
-            var data = Model.First();
             <tr>
-                <td class="customer-name">@data.Customer.Name</td>
-                <td class="customer-name">@data.Customer.Surname</td>
-                <td class="customer-name">@data.Customer.PhoneNumber</td>
-
-
-
-            
-                </tr>
+                <td class="customer-name">@Model.Customer.Name</td>
+                <td class="customer-name">@Model.Customer.Surname</td>
+                <td class="customer-name">@Model.Customer.PhoneNumber</td>
+            </tr>
         }
         </tbody>
     </table>
@@ -53,21 +48,54 @@
 
 <div class="container mt-5">
     <!-- Comments Table -->
-    <table class="table table-striped table-dark">
-        <thead>
-        <tr>
-            <th scope="col">Yorumlar</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var comment in Model)
+    <div class="container mt-5">
+        <!-- Comments Table -->
+        @if (Model.Comments != null && Model.Comments.Any())
         {
-            <tr>
-                <td>@comment.Text</td>
-            </tr>
+            <table class="table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Yorumlar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var comment in Model.Comments)
+                    {
+                        <tr>
+                            <td>@comment.Text</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         }
-        </tbody>
-    </table>
+        else
+        {
+            <p>Yorum Yok</p>
+        }
+    </div>
+
+    @if (Model.Orders != null && Model.Orders.Any())
+        {
+            <table class="table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Ürünler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model.Orders)
+                    {
+                        <tr>
+                            <td>@order.Product.ProductName</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>Henüz ürün almamış</p>
+        }
 </div>
 
 @{
