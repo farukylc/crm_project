@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApi.Repositories;
 
@@ -11,9 +12,10 @@ using WebApi.Repositories;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20231119153139_newU")]
+    partial class newU
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,7 +57,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 1,
-                            CommentDate = new DateTime(2023, 11, 19, 19, 46, 55, 486, DateTimeKind.Local).AddTicks(7030),
+                            CommentDate = new DateTime(2023, 11, 19, 18, 31, 39, 194, DateTimeKind.Local).AddTicks(740),
                             CustomerID = 1,
                             ProductID = 1,
                             Text = "Kamera kalitesi muazzam! Gece çekimleri gerçekten etkileyici."
@@ -63,7 +65,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 2,
-                            CommentDate = new DateTime(2023, 11, 19, 19, 46, 55, 486, DateTimeKind.Local).AddTicks(7050),
+                            CommentDate = new DateTime(2023, 11, 19, 18, 31, 39, 194, DateTimeKind.Local).AddTicks(760),
                             CustomerID = 1,
                             ProductID = 1,
                             Text = "İyi telefon"
@@ -71,7 +73,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 3,
-                            CommentDate = new DateTime(2023, 11, 19, 19, 46, 55, 486, DateTimeKind.Local).AddTicks(7050),
+                            CommentDate = new DateTime(2023, 11, 19, 18, 31, 39, 194, DateTimeKind.Local).AddTicks(760),
                             CustomerID = 2,
                             ProductID = 1,
                             Text = "iPhone 13'ü bir süredir kullanıyorum ve gerçekten etkileyici bir deneyim sunuyor. Öncelikle, kamerasının performansı beni büyüledi. Gelişmiş gece modu sayesinde düşük ışıkta bile muhteşem fotoğraflar çekebiliyorum. Ayrıca, ekran kalitesi gerçekten harika; renkler canlı ve parlak, video izlemek ve oyun oynamak gerçekten keyifli."
@@ -79,7 +81,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 4,
-                            CommentDate = new DateTime(2023, 11, 19, 19, 46, 55, 486, DateTimeKind.Local).AddTicks(7050),
+                            CommentDate = new DateTime(2023, 11, 19, 18, 31, 39, 194, DateTimeKind.Local).AddTicks(760),
                             CustomerID = 3,
                             ProductID = 1,
                             Text = "ben 3"
@@ -154,37 +156,6 @@ namespace WebApi.Migrations
                         });
                 });
 
-            modelBuilder.Entity("WebApi.Models.Order", b =>
-                {
-                    b.Property<int>("OrderID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"), 1L, 1);
-
-                    b.Property<int>("CustomerID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductID")
-                        .HasColumnType("int");
-
-                    b.HasKey("OrderID");
-
-                    b.HasIndex("CustomerID");
-
-                    b.HasIndex("ProductID");
-
-                    b.ToTable("Orders");
-
-                    b.HasData(
-                        new
-                        {
-                            OrderID = 1,
-                            CustomerID = 1,
-                            ProductID = 1
-                        });
-                });
-
             modelBuilder.Entity("WebApi.Models.Product", b =>
                 {
                     b.Property<int>("ProductID")
@@ -245,35 +216,9 @@ namespace WebApi.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("WebApi.Models.Order", b =>
-                {
-                    b.HasOne("WebApi.Models.Customer", "Customer")
-                        .WithMany("Orders")
-                        .HasForeignKey("CustomerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WebApi.Models.Product", "Product")
-                        .WithMany("Orders")
-                        .HasForeignKey("ProductID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("WebApi.Models.Customer", b =>
-                {
-                    b.Navigation("Orders");
-                });
-
             modelBuilder.Entity("WebApi.Models.Product", b =>
                 {
                     b.Navigation("Comments");
-
-                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

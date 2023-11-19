@@ -1,4 +1,6 @@
-﻿namespace WebApi.Models
+﻿using Newtonsoft.Json;
+
+namespace WebApi.Models
 {
     public class Customer
     {
@@ -10,6 +12,10 @@
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         
+        [JsonIgnore]
+
+        public virtual ICollection<Order>? Orders { get; set; }
+
         
         
     }

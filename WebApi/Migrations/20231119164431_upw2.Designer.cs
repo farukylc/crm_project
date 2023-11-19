@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApi.Repositories;
 
@@ -11,9 +12,10 @@ using WebApi.Repositories;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20231119164431_upw2")]
+    partial class upw2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,7 +57,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 1,
-                            CommentDate = new DateTime(2023, 11, 19, 19, 46, 55, 486, DateTimeKind.Local).AddTicks(7030),
+                            CommentDate = new DateTime(2023, 11, 19, 19, 44, 31, 536, DateTimeKind.Local).AddTicks(5070),
                             CustomerID = 1,
                             ProductID = 1,
                             Text = "Kamera kalitesi muazzam! Gece çekimleri gerçekten etkileyici."
@@ -63,7 +65,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 2,
-                            CommentDate = new DateTime(2023, 11, 19, 19, 46, 55, 486, DateTimeKind.Local).AddTicks(7050),
+                            CommentDate = new DateTime(2023, 11, 19, 19, 44, 31, 536, DateTimeKind.Local).AddTicks(5090),
                             CustomerID = 1,
                             ProductID = 1,
                             Text = "İyi telefon"
@@ -71,7 +73,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 3,
-                            CommentDate = new DateTime(2023, 11, 19, 19, 46, 55, 486, DateTimeKind.Local).AddTicks(7050),
+                            CommentDate = new DateTime(2023, 11, 19, 19, 44, 31, 536, DateTimeKind.Local).AddTicks(5090),
                             CustomerID = 2,
                             ProductID = 1,
                             Text = "iPhone 13'ü bir süredir kullanıyorum ve gerçekten etkileyici bir deneyim sunuyor. Öncelikle, kamerasının performansı beni büyüledi. Gelişmiş gece modu sayesinde düşük ışıkta bile muhteşem fotoğraflar çekebiliyorum. Ayrıca, ekran kalitesi gerçekten harika; renkler canlı ve parlak, video izlemek ve oyun oynamak gerçekten keyifli."
@@ -79,7 +81,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 4,
-                            CommentDate = new DateTime(2023, 11, 19, 19, 46, 55, 486, DateTimeKind.Local).AddTicks(7050),
+                            CommentDate = new DateTime(2023, 11, 19, 19, 44, 31, 536, DateTimeKind.Local).AddTicks(5100),
                             CustomerID = 3,
                             ProductID = 1,
                             Text = "ben 3"
@@ -174,15 +176,7 @@ namespace WebApi.Migrations
 
                     b.HasIndex("ProductID");
 
-                    b.ToTable("Orders");
-
-                    b.HasData(
-                        new
-                        {
-                            OrderID = 1,
-                            CustomerID = 1,
-                            ProductID = 1
-                        });
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("WebApi.Models.Product", b =>
