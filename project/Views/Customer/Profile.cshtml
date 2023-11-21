@@ -26,11 +26,11 @@
     <table class="table table-striped table-dark">
         <thead>
         <tr>
-            <th scope="col">Adı</th>
-            <th scope="col">Soyadı</th> 
-            <th scope="col">Telefon</th>        
-
-        
+            <th scope="col"><i class="fas fa-user"></i> Adı</th>
+            <th scope="col"><i class="fas fa-user"></i> Soyadı</th>
+            <th scope="col"><i class="fas fa-phone"></i> Telefon</th>
+            <th scope="col"><i class="fas fa-envelope"></i> Email</th>
+            <th scope="col"><i class="fas fa-map-marker-alt"></i> Adress</th> 
         </tr>
         </thead>
         <tbody>
@@ -40,6 +40,9 @@
                 <td class="customer-name">@Model.Customer.Name</td>
                 <td class="customer-name">@Model.Customer.Surname</td>
                 <td class="customer-name">@Model.Customer.PhoneNumber</td>
+                <td class="customer-name">@Model.Customer.Email</td>
+                <td class="customer-name">@Model.Customer.Address</td>
+                
             </tr>
         }
         </tbody>
@@ -55,7 +58,11 @@
             <table class="table table-striped table-dark">
                 <thead>
                     <tr>
-                        <th scope="col">Yorumlar</th>
+                        <th scope="col">
+                            <i class="fa-solid fa-comments" 
+                               style="color: #ffffff; margin-right: 5px; "></i>
+                            Yorumlar</th> 
+
                     </tr>
                 </thead>
                 <tbody>
@@ -79,7 +86,9 @@
             <table class="table table-striped table-dark">
                 <thead>
                     <tr>
-                        <th scope="col">Ürünler</th>
+                        <th scope="col"> <i class="fa-solid fa-boxes-stacked" 
+                                            style="margin-right: 5px; color: #ffffff;"></i>
+                            Ürünler</th>
                     </tr>
                 </thead>
                 <tbody>

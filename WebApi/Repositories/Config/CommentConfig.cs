@@ -38,10 +38,10 @@ namespace WebApi.Repositories.Config
                 new Comment()
                 {
                     CommentID = 4,
-                    Text = "ben 3",
+                    Text = "Harika bir bilgisayar!",
                     CommentDate = DateTime.Now,
                     CustomerID = 3,
-                    ProductID = 1
+                    ProductID = 2
                 }
                 
             );

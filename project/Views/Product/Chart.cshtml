@@ -21,6 +21,9 @@
     const prices = @Html.Raw(JsonConvert.SerializeObject(Model.Select(p => p.Price)));
     const salesAmounts = @Html.Raw(JsonConvert.SerializeObject(Model.Select(p => p.SalesAmount)));
 
+    // Calculate earnings for each product
+    const earn = prices.map((price, index) => price * salesAmounts[index]);
+
     // Data for the doughnut chart
     const pieLabels = @Html.Raw(JsonConvert.SerializeObject(Model.Select(p => p.ProductName)));
     const pieData = @Html.Raw(JsonConvert.SerializeObject(Model.Select(p => p.SalesAmount)));
@@ -33,18 +36,29 @@
             labels: barLabels,
             datasets: [
                 {
-                    label: 'Price',
+                    label: 'Fiyat',
                     data: prices,
-                    backgroundColor: '#164863',
+                    backgroundColor:'rgba(54, 162, 235, 0.2)',
                     yAxisID: 'y1',
-                    borderWidth: 1
+                    borderWidth: 1,
+                    borderColor: 'rgb(54, 162, 235)',
                 },
                 {
-                    label: 'Sales Amount',
+                    label: 'Satış ',
                     data: salesAmounts,
-                    backgroundColor: '#FFC436',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
                     yAxisID: 'y2',
-                    borderWidth: 1
+                    borderWidth: 1,
+                    borderColor: 'rgba(255, 99, 132)',
+                 
+                },
+                {
+                    label: 'Kazanç ',
+                    data: earn,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    yAxisID: 'y3',
+                    borderWidth: 1,
+                    borderColor: 'rgba(75, 192, 192)'
                 }
             ]
         },
@@ -56,7 +70,7 @@
                     beginAtZero: true,
                     title: {
                         display: true,
-                        text: 'Price'
+                        text: 'Fiyat'
                     }
                 },
                 y2: {
@@ -65,7 +79,16 @@
                     beginAtZero: true,
                     title: {
                         display: true,
-                        text: 'Sales Amount'
+                        text: 'Satış Miktarı'
+                    }
+                },
+                y3: {
+                    type: 'linear',
+                    position: 'right',
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Kazanç'
                     }
                 }
             }

@@ -13,7 +13,7 @@ namespace WebApi.Repositories.Config
                 {
                     ProductID = 1,
                     ProductName = "IPhone 13",
-                    Price = 50,
+                    Price = 38000,
                     Stars = 4.7f,
                     SalesAmount = 20,
                     imgUrl = "https://cdn.vatanbilgisayar.com/Upload/PRODUCT/apple/thumb/129743-1_large.jpg",
