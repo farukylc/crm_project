@@ -88,6 +88,5 @@ namespace WebApi.Controllers
             }
         }
 
-        // Additional endpoints for handling orders can be added as needed.
     }
 }

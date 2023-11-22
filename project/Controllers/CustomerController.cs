@@ -60,15 +60,14 @@ public class CustomerController: Controller
 
         using (HttpClient client = new HttpClient())
         {
-            // Fetch customer data
+            
             string customerUrl = customerApiUrl + id.ToString();
             HttpResponseMessage customerResponse = client.GetAsync(customerUrl).Result;
 
-            // Fetch order data
             string orderUrl = orderApiUrl + id.ToString();
             HttpResponseMessage orderResponse = client.GetAsync(orderUrl).Result;
 
-            // Fetch comment data
+            
             string commentUrl = commentApiUrl + id.ToString();
             HttpResponseMessage commentResponse = client.GetAsync(commentUrl).Result;
 
@@ -78,12 +77,10 @@ public class CustomerController: Controller
                 string orderData = orderResponse.Content.ReadAsStringAsync().Result;
                 string commentData = commentResponse.Content.ReadAsStringAsync().Result;
 
-                // Deserialize the JSON data into Customer, List<Order>, and List<Comment>
                 var customer = JsonConvert.DeserializeObject<Customer>(customerData);
                 var orders = JsonConvert.DeserializeObject<List<Order>>(orderData);
                 var comments = JsonConvert.DeserializeObject<List<Comment>>(commentData);
 
-                // Create a view model to hold customer, orders, and comments
                 var viewModel = new CustomerProfileViewModel
                 {
                     Customer = customer,

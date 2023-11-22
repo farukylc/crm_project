@@ -12,8 +12,8 @@ using WebApi.Repositories;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20231118145852_test123456")]
-    partial class test123456
+    [Migration("20231121193557_test123450")]
+    partial class test123450
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,7 +57,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 1,
-                            CommentDate = new DateTime(2023, 11, 18, 17, 58, 52, 667, DateTimeKind.Local).AddTicks(2800),
+                            CommentDate = new DateTime(2023, 11, 21, 22, 35, 57, 513, DateTimeKind.Local).AddTicks(3930),
                             CustomerID = 1,
                             ProductID = 1,
                             Text = "Kamera kalitesi muazzam! Gece çekimleri gerçekten etkileyici."
@@ -65,18 +65,26 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 2,
-                            CommentDate = new DateTime(2023, 11, 18, 17, 58, 52, 667, DateTimeKind.Local).AddTicks(2820),
-                            CustomerID = 2,
+                            CommentDate = new DateTime(2023, 11, 21, 22, 35, 57, 513, DateTimeKind.Local).AddTicks(3950),
+                            CustomerID = 1,
                             ProductID = 1,
-                            Text = "ben 2"
+                            Text = "İyi telefon"
                         },
                         new
                         {
                             CommentID = 3,
-                            CommentDate = new DateTime(2023, 11, 18, 17, 58, 52, 667, DateTimeKind.Local).AddTicks(2820),
-                            CustomerID = 3,
+                            CommentDate = new DateTime(2023, 11, 21, 22, 35, 57, 513, DateTimeKind.Local).AddTicks(3960),
+                            CustomerID = 2,
                             ProductID = 1,
-                            Text = "ben 3"
+                            Text = "iPhone 13'ü bir süredir kullanıyorum ve gerçekten etkileyici bir deneyim sunuyor. Öncelikle, kamerasının performansı beni büyüledi. Gelişmiş gece modu sayesinde düşük ışıkta bile muhteşem fotoğraflar çekebiliyorum. Ayrıca, ekran kalitesi gerçekten harika; renkler canlı ve parlak, video izlemek ve oyun oynamak gerçekten keyifli."
+                        },
+                        new
+                        {
+                            CommentID = 4,
+                            CommentDate = new DateTime(2023, 11, 21, 22, 35, 57, 513, DateTimeKind.Local).AddTicks(3960),
+                            CustomerID = 3,
+                            ProductID = 2,
+                            Text = "Harika bir bilgisayar!"
                         });
                 });
 
@@ -148,6 +156,55 @@ namespace WebApi.Migrations
                         });
                 });
 
+            modelBuilder.Entity("WebApi.Models.Order", b =>
+                {
+                    b.Property<int>("OrderID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"), 1L, 1);
+
+                    b.Property<int>("CustomerID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.HasKey("OrderID");
+
+                    b.HasIndex("CustomerID");
+
+                    b.HasIndex("ProductID");
+
+                    b.ToTable("Orders");
+
+                    b.HasData(
+                        new
+                        {
+                            OrderID = 1,
+                            CustomerID = 1,
+                            ProductID = 1
+                        },
+                        new
+                        {
+                            OrderID = 2,
+                            CustomerID = 2,
+                            ProductID = 2
+                        },
+                        new
+                        {
+                            OrderID = 3,
+                            CustomerID = 3,
+                            ProductID = 2
+                        },
+                        new
+                        {
+                            OrderID = 4,
+                            CustomerID = 1,
+                            ProductID = 2
+                        });
+                });
+
             modelBuilder.Entity("WebApi.Models.Product", b =>
                 {
                     b.Property<int>("ProductID")
@@ -181,11 +238,20 @@ namespace WebApi.Migrations
                         new
                         {
                             ProductID = 1,
-                            Price = 50,
+                            Price = 38000,
                             ProductName = "IPhone 13",
                             SalesAmount = 20,
                             Stars = 4.7f,
                             imgUrl = "https://cdn.vatanbilgisayar.com/Upload/PRODUCT/apple/thumb/129743-1_large.jpg"
+                        },
+                        new
+                        {
+                            ProductID = 2,
+                            Price = 90000,
+                            ProductName = "Macbook Pro",
+                            SalesAmount = 23,
+                            Stars = 4.7f,
+                            imgUrl = "https://cdn.akakce.com/z/apple/macbook-pro-mkgp3tu-a-apple-m1-pro-16-gb-512-gb-ssd-16-notebook.jpg"
                         });
                 });
 
@@ -208,9 +274,35 @@ namespace WebApi.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("WebApi.Models.Order", b =>
+                {
+                    b.HasOne("WebApi.Models.Customer", "Customer")
+                        .WithMany("Orders")
+                        .HasForeignKey("CustomerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebApi.Models.Product", "Product")
+                        .WithMany("Orders")
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("WebApi.Models.Customer", b =>
+                {
+                    b.Navigation("Orders");
+                });
+
             modelBuilder.Entity("WebApi.Models.Product", b =>
                 {
                     b.Navigation("Comments");
+
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

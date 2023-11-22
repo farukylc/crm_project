@@ -98,5 +98,49 @@ namespace WebApi.Controllers
                 throw new Exception(ex.Message);
             }
         }
+        
+        [HttpPut("{id:int}")]
+        public IActionResult UpdateOneProduct([FromRoute(Name = "id")] int id, [FromBody] Product updatedProduct)
+        {
+            try
+            {
+                if (updatedProduct is null || id != updatedProduct.ProductID)
+                {
+                    return BadRequest(new
+                    {
+                        statusCode = 400,
+                        message = "Invalid request. Product ID in the route and request body must match."
+                    });
+                }
+
+                var existingProduct = _context
+                    .Products
+                    .Where(p => p.ProductID.Equals(id))
+                    .SingleOrDefault();
+
+                if (existingProduct is null)
+                {
+                    return NotFound(new
+                    {
+                        statusCode = 404,
+                        message = $"Product with id:{id} could not be found."
+                    });
+                }
+
+                existingProduct.ProductName = updatedProduct.ProductName;
+                existingProduct.Price = updatedProduct.Price;
+                existingProduct.imgUrl = updatedProduct.imgUrl;
+                existingProduct.SalesAmount = updatedProduct.SalesAmount;
+                existingProduct.Stars = existingProduct.Stars;
+                _context.SaveChanges();
+
+                return Ok(existingProduct);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }

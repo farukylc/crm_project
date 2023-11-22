@@ -55,7 +55,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 1,
-                            CommentDate = new DateTime(2023, 11, 21, 21, 33, 30, 639, DateTimeKind.Local).AddTicks(5990),
+                            CommentDate = new DateTime(2023, 11, 21, 22, 35, 57, 513, DateTimeKind.Local).AddTicks(3930),
                             CustomerID = 1,
                             ProductID = 1,
                             Text = "Kamera kalitesi muazzam! Gece çekimleri gerçekten etkileyici."
@@ -63,7 +63,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 2,
-                            CommentDate = new DateTime(2023, 11, 21, 21, 33, 30, 639, DateTimeKind.Local).AddTicks(6020),
+                            CommentDate = new DateTime(2023, 11, 21, 22, 35, 57, 513, DateTimeKind.Local).AddTicks(3950),
                             CustomerID = 1,
                             ProductID = 1,
                             Text = "İyi telefon"
@@ -71,7 +71,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 3,
-                            CommentDate = new DateTime(2023, 11, 21, 21, 33, 30, 639, DateTimeKind.Local).AddTicks(6020),
+                            CommentDate = new DateTime(2023, 11, 21, 22, 35, 57, 513, DateTimeKind.Local).AddTicks(3960),
                             CustomerID = 2,
                             ProductID = 1,
                             Text = "iPhone 13'ü bir süredir kullanıyorum ve gerçekten etkileyici bir deneyim sunuyor. Öncelikle, kamerasının performansı beni büyüledi. Gelişmiş gece modu sayesinde düşük ışıkta bile muhteşem fotoğraflar çekebiliyorum. Ayrıca, ekran kalitesi gerçekten harika; renkler canlı ve parlak, video izlemek ve oyun oynamak gerçekten keyifli."
@@ -79,7 +79,7 @@ namespace WebApi.Migrations
                         new
                         {
                             CommentID = 4,
-                            CommentDate = new DateTime(2023, 11, 21, 21, 33, 30, 639, DateTimeKind.Local).AddTicks(6030),
+                            CommentDate = new DateTime(2023, 11, 21, 22, 35, 57, 513, DateTimeKind.Local).AddTicks(3960),
                             CustomerID = 3,
                             ProductID = 2,
                             Text = "Harika bir bilgisayar!"

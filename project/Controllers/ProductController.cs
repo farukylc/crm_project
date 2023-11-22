@@ -53,28 +53,7 @@ namespace project.Controllers
             }
         }
 
-        public ActionResult GetProfile(int id)
-        {
-            string apiUrl = "https://localhost:7222/api/Product/";
-
-            using (HttpClient client = new HttpClient())
-            {
-                string profileUrl = apiUrl + id.ToString();
-                HttpResponseMessage response = client.GetAsync(profileUrl).Result;
-
-                if (response.IsSuccessStatusCode)
-                {
-                    string responseData = response.Content.ReadAsStringAsync().Result;
-                    var productProfile = JsonConvert.DeserializeObject<Product>(responseData);
-
-                    return View("Profile", new List<Product> { productProfile });
-                }
-                else
-                {
-                    return RedirectToAction("Index", "Product");
-                }
-            }
-        }
+        
 
         public IActionResult CreateProductPage()
         {
@@ -96,19 +75,18 @@ namespace project.Controllers
                 imgUrl = imgurl,
             };
 
-            // Serialize the product object to JSON
+            
             string jsonProduct = JsonConvert.SerializeObject(newProduct);
 
-            // Use HttpClient to make a POST request
+            
             using (HttpClient client = new HttpClient())
             {
-                // Create StringContent from the serialized JSON data
+                
                 StringContent content = new StringContent(jsonProduct, Encoding.UTF8, "application/json");
 
-                // Make the POST request
                 HttpResponseMessage response = client.PostAsync(apiUrl, content).Result;
 
-                // Check if the request was successful (HTTP status code 2xx)
+                
                 if (response.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index", "Product");
@@ -134,7 +112,7 @@ namespace project.Controllers
 
                     var productDataList = JsonConvert.DeserializeObject<List<Product>>(data).ToList();
 
-                    // Pass the data to the view
+                    
                     return View(productDataList);
                 }
                 else
@@ -143,6 +121,48 @@ namespace project.Controllers
                 }
             }
         }
+        
+        public IActionResult UpdateProductPage()
+        {
+            return View();
+        }
+        public async Task<ActionResult> UpdateProduct(string updatedProductName, int updatedPrice, float updatedStars, int updatedSalesAmount, string updatedImgUrl)
+        {
+            string apiUrl = "https://localhost:7222/api/Product/1";
+
+            Product updatedProduct = new Product
+            {
+                ProductName = updatedProductName,
+                Price = updatedPrice,
+                Stars = updatedStars,
+                SalesAmount = updatedSalesAmount,
+                imgUrl = updatedImgUrl,
+            };
+
+            // Serialize the updated product object to JSON
+            string jsonUpdatedProduct = JsonConvert.SerializeObject(updatedProduct);
+
+            // Use HttpClient to make a PUT request
+            using (HttpClient client = new HttpClient())
+            {
+                // Create StringContent from the serialized JSON data
+                StringContent content = new StringContent(jsonUpdatedProduct, Encoding.UTF8, "application/json");
+
+                // Make the PUT request
+                HttpResponseMessage response = await client.PutAsync(apiUrl, content);
+
+                // Check if the request was successful (HTTP status code 2xx)
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index", "Product");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Product");
+                }
+            }
+        }
+
 
         
         
