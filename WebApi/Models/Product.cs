@@ -18,6 +18,8 @@ namespace WebApi.Models
         [JsonIgnore]
 
         public virtual ICollection<Order>? Orders { get; set; }
+        
+        
 
     }
 }

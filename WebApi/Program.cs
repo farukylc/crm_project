@@ -1,3 +1,5 @@
+using System.Reflection;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using WebApi.Repositories;
 
@@ -9,6 +11,17 @@ builder.Services.AddControllers()
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddControllers()
+    .AddFluentValidation(options =>
+    {
+        options.ImplicitlyValidateChildProperties = true;
+        options.ImplicitlyValidateRootCollectionElements = true;
+
+        options.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+    });
+
+
 
 builder.Services.AddDbContext<RepositoryContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("sqlConnection")));
